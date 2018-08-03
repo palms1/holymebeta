@@ -4,6 +4,7 @@
   "description": "Versão beta para cadastro de usuários",
   "main": "server.js",
   "scripts": {
+    "prestart": "node getEnv",
     "deploy": "gcloud app deploy",
     "client-install": "npm install --prefix client",
     "start": "node server.js",

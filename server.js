@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 
+require("dotenv").config(); // Loads .env
+
 const app = express();
 
 //Importing API ROUTES
