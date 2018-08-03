@@ -30,9 +30,6 @@ mongoose
 );*/
 //Use Routes
 app.use("/api/register", register);
-app.get("/", (req, res) => {
-  res.json({ message: "hello" });
-});
 
 // Serve static assets if in prod
 if (process.env.NODE_ENV === "production") {
