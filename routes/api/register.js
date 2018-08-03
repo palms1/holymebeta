@@ -3,10 +3,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 // Validation
-const validateRegisterInput = require("././validation/register");
+const validateRegisterInput = require("../../validation/register");
 
 //Load User model
-const User = require("././models/User");
+const User = require("../../models/User");
 
 // @route   GET api/register/test
 // @desc    Tests register route
