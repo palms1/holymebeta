@@ -15,11 +15,13 @@
   "author": "Palmor Almeida",
   "license": "MIT",
   "dependencies": {
+    "@google-cloud/storage": "^1.7.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.6",
     "concurrently": "^3.6.1",
     "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mongoose": "^5.2.6",
     "validator": "^10.4.0"
