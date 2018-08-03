@@ -11,11 +11,18 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
 import Typography from "@material-ui/core/Typography";
+import MenuItem from "@material-ui/core/MenuItem";
 
 const styles = theme => ({
+  root: {
+    verticalAlign: "bottom",
+    marginTop: "auto",
+    marginBottom: "auto"
+  },
   container: {
     display: "flex",
-    flexWrap: "wrap"
+    flexWrap: "wrap",
+    flexDirection: "column-reverse"
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -79,6 +86,7 @@ class Register extends Component {
   }
 
   handleChange = event => {
+    if (event.target.name === "state") event.target.id = "state";
     this.setState({ [event.target.id]: event.target.value });
   };
 
@@ -225,7 +233,7 @@ class Register extends Component {
 
                 <hr />
 
-                <div className="form-row">
+                <div className="form-row formHeight">
                   <TextField
                     error={!!errors.name}
                     id="name"
@@ -257,7 +265,7 @@ class Register extends Component {
                     helperText={errors.phone}
                   />
                 </div>
-                <div className="form-row">
+                <div className="form-row formHeight">
                   <TextField
                     error={!!errors.street}
                     id="street"
@@ -289,17 +297,44 @@ class Register extends Component {
                     margin="normal"
                     helperText={errors.city}
                   />
-
-                  <TextField
-                    error={!!errors.state}
-                    id="state"
-                    label="Estado"
-                    value={this.state.state}
-                    className={classes.cepField}
-                    onChange={this.handleChange}
-                    margin="normal"
-                    helperText={errors.state}
-                  />
+                  <FormControl className={classes.root}>
+                    <Select
+                      className={classes.cepField}
+                      value={this.state.state}
+                      onChange={this.handleChange}
+                      name="state"
+                      error={!!errors.state}
+                    >
+                      <MenuItem value={""}>UF</MenuItem>
+                      <MenuItem value={"AC"}>AC</MenuItem>
+                      <MenuItem value={"AL"}>AL</MenuItem>
+                      <MenuItem value={"AP"}>AP</MenuItem>
+                      <MenuItem value={"AM"}>AM</MenuItem>
+                      <MenuItem value={"BA"}>BA</MenuItem>
+                      <MenuItem value={"CE"}>CE</MenuItem>
+                      <MenuItem value={"DF"}>DF</MenuItem>
+                      <MenuItem value={"ES"}>ES</MenuItem>
+                      <MenuItem value={"GO"}>GO</MenuItem>
+                      <MenuItem value={"MA"}>MA</MenuItem>
+                      <MenuItem value={"MT"}>MT</MenuItem>
+                      <MenuItem value={"MS"}>MS</MenuItem>
+                      <MenuItem value={"MG"}>MG</MenuItem>
+                      <MenuItem value={"PA"}>PA</MenuItem>
+                      <MenuItem value={"PB"}>PB</MenuItem>
+                      <MenuItem value={"PR"}>PR</MenuItem>
+                      <MenuItem value={"PE"}>PE</MenuItem>
+                      <MenuItem value={"PI"}>PI</MenuItem>
+                      <MenuItem value={"RJ"}>RJ</MenuItem>
+                      <MenuItem value={"RN"}>RN</MenuItem>
+                      <MenuItem value={"RS"}>RS</MenuItem>
+                      <MenuItem value={"RO"}>RO</MenuItem>
+                      <MenuItem value={"RR"}>RR</MenuItem>
+                      <MenuItem value={"SC"}>SC</MenuItem>
+                      <MenuItem value={"SP"}>SP</MenuItem>
+                      <MenuItem value={"SE"}>SE</MenuItem>
+                      <MenuItem value={"TO"}>TO</MenuItem>
+                    </Select>
+                  </FormControl>
                   <TextField
                     error={!!errors.zip}
                     id="zip"

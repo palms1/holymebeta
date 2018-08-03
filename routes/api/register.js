@@ -51,7 +51,7 @@ router.post("/", (req, res) => {
   if (req.body.number) userFields.location.number = req.body.number;
   if (req.body.city) userFields.location.city = req.body.city;
   if (req.body.state) userFields.location.state = req.body.state;
-  if (req.body.zip) userFields.location.zip = req.body.zip;
+  if (req.body.zip) userFields.location.zip = req.body.zip.replace(/-/gi, "");
 
   // Skills - Spilt into array
   if (typeof req.body.skills !== "undefined") {

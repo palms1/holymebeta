@@ -9,7 +9,7 @@ module.exports = function validateRegisterInput(data) {
   data.state = !isEmpty(data.state) ? data.state : "";
   data.phone = !isEmpty(data.phone) ? data.phone.replace(/[()\-]/gi, "") : "";
   data.skills = !isEmpty(data.skills) ? data.skills : "";
-  data.zip = !isEmpty(data.zip) ? data.zip : "";
+  data.zip = !isEmpty(data.zip) ? data.zip.replace(/-/gi, "") : "";
   data.number = !isEmpty(data.number) ? data.number : "";
   data.isDoctor = !isEmpty(data.isDoctor) ? data.isDoctor : "";
 
@@ -69,7 +69,7 @@ module.exports = function validateRegisterInput(data) {
     errors.phone = "Campo telefone é obrigatório";
   }
 
-  if (data.number != "" && !Validator.isLength(data.zip, { min: 8, max: 8 })) {
+  if (data.zip != "" && !Validator.isLength(data.zip, { min: 8, max: 8 })) {
     errors.zip = "Cep inválido";
   }
 
