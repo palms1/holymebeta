@@ -5,7 +5,7 @@ const cors = require("cors");
 const path = require("path");
 
 require("dotenv").config(); // Loads .env
-console.log(process.env.mongoURI);
+
 const app = express();
 
 //Importing API ROUTES
@@ -16,12 +16,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Require mongoose key
-const db = require("./config/keys").mongoURI;
+//const db = require("./config/keys").mongoURI;
 
 //Database connection
 mongoose
   .connect(
-    db,
+    process.env.mongoURI,
     { useNewUrlParser: true }
   )
   .then(() => console.log("Database connected successfully"))
