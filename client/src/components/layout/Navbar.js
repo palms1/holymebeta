@@ -28,6 +28,8 @@ class Navbar extends Component {
                 <a
                   className="nav-link"
                   href="https://www.facebook.com/HOLYmeBr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i className="fab fa-facebook-f" /> Facebook
                 </a>
@@ -36,12 +38,19 @@ class Navbar extends Component {
                 <a
                   className="nav-link"
                   href="https://www.instagram.com/holymebr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i className="fab fa-instagram" /> Instagram
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="https://twitter.com/holymebr">
+                <a
+                  className="nav-link"
+                  href="https://twitter.com/holymebr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className="fab fa-twitter" /> Twitter
                 </a>
               </li>
