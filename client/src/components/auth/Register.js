@@ -11,18 +11,17 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormLabel from "@material-ui/core/FormLabel";
 import Typography from "@material-ui/core/Typography";
-import MenuItem from "@material-ui/core/MenuItem";
 
 const styles = theme => ({
   root: {
     verticalAlign: "bottom",
-    marginTop: "auto",
+    marginTop: "32px",
     marginBottom: "auto"
   },
   container: {
     display: "flex",
-    flexWrap: "wrap",
-    flexDirection: "column-reverse"
+    flexWrap: "wrap"
+    //flexDirection: "column-reverse"
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -55,6 +54,12 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2
+  },
+  textColor: {
+    color: "red",
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: 80
   }
 });
 
@@ -130,6 +135,12 @@ class Register extends Component {
     const { classes } = this.props;
     const { errors, displaySocialInputs } = this.state;
 
+    let labelTerapias;
+    if (this.state.isDoctor === "true") {
+      labelTerapias = "Quais terapias pratica?";
+    } else {
+      labelTerapias = "Quais terapias tem interesse?";
+    }
     let socialInputs;
     if (displaySocialInputs) {
       socialInputs = (
@@ -213,6 +224,7 @@ class Register extends Component {
                     <FormGroup>
                       <Select
                         native
+                        ref="terapia"
                         className={classes.doctorField}
                         value={this.state.isDoctor}
                         onChange={this.handleChange}
@@ -230,10 +242,8 @@ class Register extends Component {
                     <FormHelperText>{errors.isDoctor}</FormHelperText>
                   </FormControl>
                 </div>
-
                 <hr />
-
-                <div className="form-row formHeight">
+                <div className="form-row ">
                   <TextField
                     error={!!errors.name}
                     id="name"
@@ -265,7 +275,8 @@ class Register extends Component {
                     helperText={errors.phone}
                   />
                 </div>
-                <div className="form-row formHeight">
+                <hr />
+                <div className="form-row">
                   <TextField
                     error={!!errors.street}
                     id="street"
@@ -299,40 +310,43 @@ class Register extends Component {
                   />
                   <FormControl className={classes.root}>
                     <Select
-                      className={classes.cepField}
+                      native
+                      className={
+                        !errors.state ? classes.cepField : classes.textColor
+                      }
                       value={this.state.state}
                       onChange={this.handleChange}
                       name="state"
                       error={!!errors.state}
                     >
-                      <MenuItem value={""}>UF</MenuItem>
-                      <MenuItem value={"AC"}>AC</MenuItem>
-                      <MenuItem value={"AL"}>AL</MenuItem>
-                      <MenuItem value={"AP"}>AP</MenuItem>
-                      <MenuItem value={"AM"}>AM</MenuItem>
-                      <MenuItem value={"BA"}>BA</MenuItem>
-                      <MenuItem value={"CE"}>CE</MenuItem>
-                      <MenuItem value={"DF"}>DF</MenuItem>
-                      <MenuItem value={"ES"}>ES</MenuItem>
-                      <MenuItem value={"GO"}>GO</MenuItem>
-                      <MenuItem value={"MA"}>MA</MenuItem>
-                      <MenuItem value={"MT"}>MT</MenuItem>
-                      <MenuItem value={"MS"}>MS</MenuItem>
-                      <MenuItem value={"MG"}>MG</MenuItem>
-                      <MenuItem value={"PA"}>PA</MenuItem>
-                      <MenuItem value={"PB"}>PB</MenuItem>
-                      <MenuItem value={"PR"}>PR</MenuItem>
-                      <MenuItem value={"PE"}>PE</MenuItem>
-                      <MenuItem value={"PI"}>PI</MenuItem>
-                      <MenuItem value={"RJ"}>RJ</MenuItem>
-                      <MenuItem value={"RN"}>RN</MenuItem>
-                      <MenuItem value={"RS"}>RS</MenuItem>
-                      <MenuItem value={"RO"}>RO</MenuItem>
-                      <MenuItem value={"RR"}>RR</MenuItem>
-                      <MenuItem value={"SC"}>SC</MenuItem>
-                      <MenuItem value={"SP"}>SP</MenuItem>
-                      <MenuItem value={"SE"}>SE</MenuItem>
-                      <MenuItem value={"TO"}>TO</MenuItem>
+                      <option value="">UF</option>
+                      <option value="AC">AC</option>
+                      <option value="AL">AL</option>
+                      <option value="AP">AP</option>
+                      <option value="AM">AM</option>
+                      <option value="BA">BA</option>
+                      <option value="CE">CE</option>
+                      <option value="DF">DF</option>
+                      <option value="ES">ES</option>
+                      <option value="GO">GO</option>
+                      <option value="MA">MA</option>
+                      <option value="MT">MT</option>
+                      <option value="MS">MS</option>
+                      <option value="MG">MG</option>
+                      <option value="PA">PA</option>
+                      <option value="PB">PB</option>
+                      <option value="PR">PR</option>
+                      <option value="PE">PE</option>
+                      <option value="PI">PI</option>
+                      <option value="RJ">RJ</option>
+                      <option value="RN">RN</option>
+                      <option value="RS">RS</option>
+                      <option value="RO">RO</option>
+                      <option value="RR">RR</option>
+                      <option value="SC">SC</option>
+                      <option value="SP">SP</option>
+                      <option value="SE">SE</option>
+                      <option value="TO">TO</option>
                     </Select>
                   </FormControl>
                   <TextField
@@ -351,7 +365,7 @@ class Register extends Component {
                   <TextField
                     error={!!errors.skills}
                     id="skills"
-                    label="Quais terapias você pratica ou tem interesse?"
+                    label={labelTerapias}
                     fullWidth
                     value={this.state.skills}
                     onChange={this.handleChange}
