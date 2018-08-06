@@ -147,7 +147,7 @@ class Register extends Component {
         <div>
           <TextField
             label="Link do Twitter"
-            name="twitter"
+            id="twitter"
             icon="fab fa-twitter"
             className={classes.textField}
             value={this.state.twitter}
@@ -159,7 +159,7 @@ class Register extends Component {
 
           <TextField
             label="Link do Facebook"
-            name="facebook"
+            id="facebook"
             icon="fab fa-facebook"
             className={classes.textField}
             value={this.state.facebook}
@@ -171,7 +171,7 @@ class Register extends Component {
 
           <TextField
             label="Link do Linkedin"
-            name="linkedin"
+            id="linkedin"
             icon="fab fa-linkedin"
             className={classes.textField}
             value={this.state.linkedin}
@@ -183,7 +183,7 @@ class Register extends Component {
 
           <TextField
             label="Link do Youtube"
-            name="youtube"
+            id="youtube"
             icon="fab fa-youtube"
             className={classes.textField}
             value={this.state.youtube}
@@ -195,7 +195,7 @@ class Register extends Component {
 
           <TextField
             label="Link do Instagram"
-            name="instagram"
+            id="instagram"
             icon="fab fa-instagram"
             className={classes.textField}
             value={this.state.instagram}
