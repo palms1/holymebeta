@@ -272,7 +272,7 @@ class Register extends Component {
                     className={classes.textField}
                     onChange={this.handleChange}
                     margin="normal"
-                    helperText={errors.phone}
+                    helperText={errors.phone || "(11)99999-9999"}
                   />
                 </div>
                 <hr />
