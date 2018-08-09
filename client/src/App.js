@@ -6,6 +6,7 @@ import "./App.css";
 import Footer from "./components/layout/Footer";
 import Register from "./components/auth/Register";
 import Success from "./components/layout/Success";
+import UserList from "./components/admin/UserList";
 
 class App extends Component {
   render() {
@@ -16,6 +17,8 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/register/success" component={Success} />
+          <Route exact path="/register/pardo/lista" component={UserList} />
+
           <Footer />
         </div>
       </Router>

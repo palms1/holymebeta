@@ -35,13 +35,13 @@ router.post("/", (req, res) => {
 
   // Type of treatment
 
-  if (typeof req.body.residencia === Boolean)
+  userFields.typeOfTreatment = {};
+  if (req.body.residencia != null)
     userFields.typeOfTreatment.residencia = req.body.residencia;
-  if (typeof req.body.online === Boolean)
+  if (req.body.online != null)
     userFields.typeOfTreatment.online = req.body.online;
-  if (typeof req.body.consultorio === Boolean)
+  if (req.body.consultorio != null)
     userFields.typeOfTreatment.consultorio = req.body.consultorio;
-
   if (req.body.phone) {
     userFields.phone = req.body.phone.replace(/[()\-]/gi, "");
   }
@@ -78,4 +78,27 @@ router.post("/", (req, res) => {
   });
 });
 
+// @route   GET api/register/test
+// @desc    Tests register route
+// @access  Public
+router.get("/pardo/lista", (req, res) => {
+  const erros = {};
+
+  User.find().then(profiles => {
+    res.json(profiles);
+  });
+});
+
 module.exports = router;
+
+/* Profile.find()
+    .populate('user', ['name', 'avatar'])
+    .then(profiles => {
+      if (!profiles) {
+        errors.noprofile = 'There are no profiles';
+        return res.status(404).json(errors);
+      }
+
+      res.json(profiles);
+    })
+    .catch(err => res.status(404).json({ profile: 'There are no profiles' }));*/
