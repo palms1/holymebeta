@@ -7,3 +7,9 @@ resources:
   cpu: 1
   memory_gb: 0.5
   disk_size_gb: 10
+
+  handlers:
+- url: /.well-known/acme-challenge/(.*)
+  mime_type: text/plain
+  static_files: well-known/acme-challenge/\1
+  upload: well-known/acme-challenge/.*
