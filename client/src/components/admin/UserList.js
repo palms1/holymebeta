@@ -27,6 +27,17 @@ class UserList extends Component {
       users: []
     };
   }
+
+  social = (n, rede) => {
+    if (!n.social) {
+      return "-";
+    } else if (rede === "facebook") return n.social.facebook;
+    else if (rede === "twitter") return n.social.twitter;
+    else if (rede === "instagram") return n.social.instagram;
+    else if (rede === "linkedin") return n.social.linkedin;
+    else if (rede === "youtube") return n.social.youtube;
+  };
+
   componentWillMount() {
     axios
       .get("/api/register/pardo/lista")
@@ -44,12 +55,19 @@ class UserList extends Component {
                 <TableCell>Terapeuta</TableCell>
                 <TableCell>Nome</TableCell>
                 <TableCell>Terapia</TableCell>
-                <TableCell>Estado</TableCell>
+                <TableCell>Rua</TableCell>
+                <TableCell>Nº</TableCell>
                 <TableCell>Cidade</TableCell>
+                <TableCell>Estado</TableCell>
                 <TableCell>Telefone</TableCell>
                 <TableCell>Residencia</TableCell>
                 <TableCell>Consultorio</TableCell>
                 <TableCell>Online</TableCell>
+                <TableCell>Facebook</TableCell>
+                <TableCell>Linkedin</TableCell>
+                <TableCell>Instagram</TableCell>
+                <TableCell>Twitter</TableCell>
+                <TableCell>Youtube</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -59,11 +77,16 @@ class UserList extends Component {
                     <TableCell>{n.isDoctor === true ? "Sim" : "Não"}</TableCell>
                     <TableCell>{n.name}</TableCell>
                     <TableCell>{n.skills.toString()}</TableCell>
+                    <TableCell>
+                      {n.location.street ? n.location.street : ""}
+                    </TableCell>
+                    <TableCell>
+                      {n.location.number ? n.location.number : ""}
+                    </TableCell>
                     <TableCell>{n.location.state}</TableCell>
                     <TableCell>{n.location.city}</TableCell>
                     <TableCell>{n.phone}</TableCell>
                     <TableCell>
-                      {console.log(n.typeOfTreatment.residencia)}
                       {n.typeOfTreatment.residencia === true ? "Sim" : "Não"}
                     </TableCell>
                     <TableCell>
@@ -72,6 +95,11 @@ class UserList extends Component {
                     <TableCell>
                       {n.typeOfTreatment.online === true ? "Sim" : "Não"}
                     </TableCell>
+                    <TableCell>{this.social(n, "facebook")}</TableCell>
+                    <TableCell>{this.social(n, "linkedin")}</TableCell>
+                    <TableCell>{this.social(n, "instagram")}</TableCell>
+                    <TableCell>{this.social(n, "twitter")}</TableCell>
+                    <TableCell>{this.social(n, "youtube")}</TableCell>
                   </TableRow>
                 );
               })}
