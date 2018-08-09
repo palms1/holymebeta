@@ -3,11 +3,12 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
+const helmet = require("helmet");
 
 require("dotenv").config(); // Loads .env
 
 const app = express();
-
+app.use(helmet());
 //Importing API ROUTES
 const register = require("./routes/api/register");
 
