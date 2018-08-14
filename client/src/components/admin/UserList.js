@@ -60,6 +60,7 @@ class UserList extends Component {
                 <TableCell>Cidade</TableCell>
                 <TableCell>Estado</TableCell>
                 <TableCell>Telefone</TableCell>
+                <TableCell>Email</TableCell>
                 <TableCell>Residencia</TableCell>
                 <TableCell>Consultorio</TableCell>
                 <TableCell>Online</TableCell>
@@ -86,6 +87,7 @@ class UserList extends Component {
                     <TableCell>{n.location.state}</TableCell>
                     <TableCell>{n.location.city}</TableCell>
                     <TableCell>{n.phone}</TableCell>
+                    <TableCell>{n.email}</TableCell>
                     <TableCell>
                       {n.typeOfTreatment.residencia === true ? "Sim" : "Não"}
                     </TableCell>
