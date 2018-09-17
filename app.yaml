@@ -10,3 +10,6 @@ handlers:
     secure: always
     redirect_http_response_code: 301
     script: auto
+
+env_variables:
+  mongoURI: "mongodb://admin:holymeadmin2018@ds135594.mlab.com:35594/sitealpha"
