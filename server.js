@@ -18,13 +18,10 @@ app.use(bodyParser.json());
 
 //Require mongoose key
 //const db = require("./config/keys").mongoURI;
-
+console.log(process.env.mongoURI);
 //Database connection
 mongoose
-  .connect(
-    process.env.mongoURI,
-    { useNewUrlParser: true }
-  )
+  .connect(process.env.mongoURI)
   .then(() => console.log("Database connected successfully"))
   .catch(err => console.log(err));
 
